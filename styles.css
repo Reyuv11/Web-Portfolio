@@ -1,0 +1,407 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 3vw, 3rem); 
+  position: fixed;
+  top: 0;
+  left: clamp(1%, 3vw, 5%);
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  height: clamp(60px, 8vh, 80px);
+}
+
+.nav.nav-hero {
+  background-color: transparent;
+  backdrop-filter: none;
+  transform: translateY(0);
+}
+
+.nav.nav-visible {
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  transform: translateY(0);
+}
+      
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: clamp(0.875rem, 2vw, 1.25rem);
+  color: #4e91f5;
+  transition: color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+  user-select: none;
+  display: inline-block;
+}
+
+.logo:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-list {
+  display: flex;
+  gap: clamp(0.5rem, 3vw, 2.5rem); 
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-list a {
+  opacity: 1; 
+  transform: translateX(0); 
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 2vw, 1.25rem); 
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: clamp(0.25rem, 1vw, 0.5rem) 0;
+}
+
+.nav-list a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4e91f5;
+  transition: width 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #4e91f5;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.nav-list a:hover::before {
+  width: 100%;
+}
+
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #4e91f5, #64a8ff, #4e91f5);
+  z-index: 1001;
+  transition: width 0.1s ease;
+}
+
+
+/* Homepage Section */
+.hero {
+  height: 100vh;
+  position: relative;
+  padding-top: clamp(200px, 30vh, 315px);
+}
+
+.rectangle {
+  width: clamp(0px, 100vw - 1200px, 300px); 
+  height: clamp(0px, (100vw - 1200px) * 0.267, 80px); 
+  background-color: white; 
+  position: absolute; 
+  top: clamp(20%, 26vh, 26%);
+  left: clamp(55%, 63vw, 63%); 
+  transform: translate(-50%, -50%); 
+  z-index: 1;
+  opacity: clamp(0, (100vw - 1200px) / 100, 1);
+}
+
+.rectangle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.vertical-rectangle {
+  width: clamp(0px, 100vw - 1200px, 200px); 
+  height: clamp(0px, 100vw - 1200px, 200px); 
+  background-color: white; 
+  position: absolute; 
+  top: clamp(200%, 250vh, 250%); 
+  left: clamp(140%, 165vw, 165%); 
+  transform: translate(-50%, -100%); 
+  z-index: 1;
+  opacity: clamp(0, (100vw - 1200px) / 100, 1);
+}
+
+.vertical-rectangle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.vertical-rectangle1 {
+  width: clamp(0px, 100vw - 1200px, 200px); 
+  height: clamp(0px, (100vw - 1200px) * 2, 400px); 
+  top: clamp(90%, 110vh, 110%); 
+  background-color: white; 
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%);
+  opacity: clamp(0, (100vw - 1200px) / 100, 1);
+}
+
+.vertical-rectangle1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin-left: clamp(2rem, 8vw, 7rem);
+  margin-top: clamp(-60px, -10vh, -100px);
+  animation: fadeInUp 1s ease 0.5s forwards;
+}
+
+.hero-subtitle span {
+  color: #4e91f5;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 18vw, 18rem); 
+  line-height: 1;
+  margin-left: clamp(2rem, 8vw, 7rem);
+  animation: fadeInUp 1s ease 0.7s forwards;
+}
+
+@keyframes fadeInUp {
+    0% { 
+      opacity: 0; 
+      transform: translateY(20px); 
+  }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0); 
+  }
+}
+
+
+/* About Section */
+.about {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  text-align: center;
+}
+
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(2rem, 6vw, 4rem);
+  padding: 0 clamp(2rem, 8vw, 7rem);
+}
+
+.about-text {
+  text-align: left;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+}
+
+.about-text span {
+  color: #4e91f5;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;         
+  height: clamp(300px, 50vw, 600px);           
+  background-color: white; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;    
+  margin: auto;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+
+/* Projects Section */
+.projects {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  text-align: center;
+}
+
+.projects h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 45vw, 500px), 1fr));
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: 0 clamp(2rem, 8vw, 7rem);
+}
+
+.projects-card {
+  background-color: #181818;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.projects-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background-color: #222222;
+  border-color: #ccc;
+  box-shadow: 40px 60px 80px rgba(81, 142, 235, 0.15);
+}
+
+.projects-card h3 {
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  margin-bottom: clamp(1rem, 2.5vw, 1.25rem);
+  color: #4e91f5;
+}
+
+.projects-card p {
+  font-size: clamp(0.875rem, 2vw, 0.9375rem);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.6;
+}
+
+.projects-card img {
+  width: 100%;
+  height: clamp(150px, 25vw, 200px);
+  object-fit: cover; 
+  display: block;
+  border-radius: 5px;
+}
+
+/* Contact Section */
+.contact {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.contact-form {
+  max-width: clamp(300px, 80vw, 856px);
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.form-group {
+  margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+.form-group label {
+  display: block;
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: #4e91f5;
+  font-size: clamp(1rem, 2.5vw, 1.5625rem);
+  padding: clamp(0.25rem, 1vw, 0.5rem) 0;
+}
+
+.form-group textarea {
+  height: clamp(120px, 20vh, 180px);
+  resize: none;
+}
+
+.btn-send {
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-send:hover {
+  background-color: #e5e5e5;
+  transform: scale(1.1);
+}
+
+
+/* Footer Socials */
+.social-icons {
+  text-align: center;
+  padding: clamp(15px, 3vw, 20px);
+  margin-top: clamp(-15px, -3vw, -20px);
+}
+
+.social-icons a {
+  color: white;
+  font-size: clamp(25px, 5vw, 35px);
+  margin: 0 clamp(5px, 2vw, 10px);
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #4e91f5;
+  transition: transform 0.5s ease, color 0.5s ease;
+}
